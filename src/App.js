@@ -6,7 +6,7 @@ import Login from './components/Login';
 import ClassesInstr from './components/ClassesInstr';
 import DashboardUser from './components/DashboardUser';
 import DashboardInstr from './components/DashboardInstr';
-import Register from './components/Register';
+import FormikRegister from './components/Register';
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
         <div className='App'>
           <Route path='/dashboarduser' component={DashboardUser} />
           <Route path='/dashboardinstr' component={DashboardInstr} />
-          <Route path='/register' component={Register} />
+          <Route path='/register' component={FormikRegister} />
           <Route path='/login' component={Login} />
           <Route path='/classesuser' component={ClassesUser} />
           <Route path='/classesinstructor' component={ClassesInstr} />
