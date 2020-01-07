@@ -1,0 +1,15 @@
+.loginContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: lightgray;
+    border: 2px solid gray;
+    margin: 5%;
+    padding: 2%;
+}
