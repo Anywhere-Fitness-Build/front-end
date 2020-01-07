@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 import { withFormik, Form, Field } from 'formik';
+import axios from 'axios';
+import axiosAuth from '../axiosAuth';
 
 const UserForm = ({ values, errors, touched, status }) => {
   const [users, setUser] = useState([]);
@@ -16,15 +19,11 @@ const UserForm = ({ values, errors, touched, status }) => {
           <Field id='username' type='text' name='username' />
           <br />
           <label htmlFor='password'>Password:</label>
-          <Field id='password' type='text' name='password' />
+          <Field id='password' type='password' name='password' />
           <br />
           <button type='submit'>Submit</button>
         </Form>
-        {users.map(user => (
-          <ul key={user.id}>
-            <li>User: {user.username}</li>
-          </ul>
-        ))}
+        <p>Don't have an account? <Link to="/register">Register Here.</Link></p>
       </div>
     </>
   );
@@ -37,7 +36,26 @@ const FormikUserForm = withFormik({
       email: '',
       password: ''
     };
-  }
+  },
+  handleSubmit(
+        values,
+        {setStatus, resetForm}
+    ) {
+        console.log("submitting", values);
+        axiosAuth()
+            .post(
+                "/auth/login",
+                values
+            )
+            .then(res => {
+                console.log("success", res);
+                setStatus(res.data);
+                resetForm();
+            })
+            .catch(err => 
+                console.log(err.response)
+                );
+    }
 })(UserForm);
 
 export default FormikUserForm;
