@@ -11,9 +11,10 @@ const UserForm = ({ values, errors, touched, status }) => {
     status && setUser(users => [...users, status]);
   }, [status]);
   return (
-    <>
-      <h1>login here soon</h1>
-      <div className='user-form'>
+    <div className="loginContainer">
+    
+      <div className='login'>
+      <h1>Login:  </h1>
         <Form>
           <label htmlFor='username'>Username:</label>
           <Field id='username' type='text' name='username' />
@@ -25,7 +26,7 @@ const UserForm = ({ values, errors, touched, status }) => {
         </Form>
         <p>Don't have an account? <Link to="/register">Register Here.</Link></p>
       </div>
-    </>
+    </div>
   );
 };
 
