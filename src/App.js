@@ -7,21 +7,24 @@ import ClassesInstr from './components/ClassesInstr';
 import DashboardUser from './components/DashboardUser';
 import DashboardInstr from './components/DashboardInstr';
 import Register from './components/Register';
+import AppState from './context/AppState';
 
 const App = () => {
   return (
-    <Router>
-      <Switch>
-        <div className='App'>
-          <Route path='/dashboarduser' component={DashboardUser} />
-          <Route path='/dashboardinstr' component={DashboardInstr} />
-          <Route path='/register' component={Register} />
-          <Route path='/login' component={Login} />
-          <Route path='/classesuser' component={ClassesUser} />
-          <Route path='/classesinstructor' component={ClassesInstr} />
-        </div>
-      </Switch>
-    </Router>
+    <AppState>
+      <Router>
+        <Switch>
+          <div className='App'>
+            <Route path='/dashboarduser' component={DashboardUser} />
+            <Route path='/dashboardinstr' component={DashboardInstr} />
+            <Route path='/register' component={Register} />
+            <Route path='/login' component={Login} />
+            <Route path='/classesuser' component={ClassesUser} />
+            <Route path='/classesinstructor' component={ClassesInstr} />
+          </div>
+        </Switch>
+      </Router>
+    </AppState>
   );
 };
 
