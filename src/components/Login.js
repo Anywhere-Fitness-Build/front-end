@@ -19,9 +19,11 @@ const UserForm = ({ values, errors, touched, status }) => {
         <Form>
           <label htmlFor='username'>Username:</label>
           <Field id='username' type='text' name='username' />
+          {touched.username && errors.username && <p className="errors">{errors.username}</p>}
           <br />
           <label htmlFor='password'>Password:</label>
           <Field id='password' type='password' name='password' />
+          {touched.password && errors.password && <p className="errors">{errors.password}</p>}
           <br />
           <button type='submit'>Submit</button>
         </Form>
