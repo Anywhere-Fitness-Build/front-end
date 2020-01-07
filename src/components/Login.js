@@ -50,7 +50,7 @@ const FormikUserForm = withFormik({
         {setStatus, resetForm}
     ) {
         console.log("submitting", values);
-        axiosAuth()
+        axiosAuth() //waiting for local storage on token
             .post(
                 "/auth/login",
                 values

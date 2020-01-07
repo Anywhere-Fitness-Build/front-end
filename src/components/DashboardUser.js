@@ -1,8 +1,19 @@
 import React from 'react';
 import Header from './Header';
+import axios from 'axios';
+import axiosAuth from '../axiosAuth';
+import { setNestedObjectValues } from 'formik';
 
 
 const DashboardUser = () => {
+  axiosAuth()
+.get("/auth/whoami")
+.then(res => {
+  console.log("success", res);
+})
+.catch(err => 
+  console.log(err.response)
+  );
   return (
     <div>
       <Header/>
@@ -24,5 +35,7 @@ const DashboardUser = () => {
     </div>
   );
 };
+
+
 
 export default DashboardUser;
