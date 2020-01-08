@@ -4,7 +4,15 @@ import axios from 'axios';
 import axiosAuth from '../axiosAuth';
 import { setNestedObjectValues } from 'formik';
 
-
+const dummyData = {
+  "name": "Fat 2 Fit",
+  "type": "Cardio",
+  "startTime": "2020-01-13T16:30:00.000Z",
+  "duration": "1h",
+  "intensity": 8,
+  "location": "San Francisco",
+  "maxSize": 10
+}
 const DashboardUser = () => {
   axiosAuth()
 .get("/auth/whoami")

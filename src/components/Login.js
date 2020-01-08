@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Link} from 'react-router-dom';
 import { withFormik, Form, Field, yupToFormErrors } from 'formik';
-import axios from 'axios';
 import axiosAuth from '../axiosAuth';
 import * as Yup from 'yup';
 
