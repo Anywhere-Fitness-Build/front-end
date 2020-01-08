@@ -13,3 +13,26 @@
     margin: 5%;
     padding: 2%;
 }
+
+.dashContainer{
+    width: 100%;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.classes{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+.class{
+    border: 1px solid red;
+    width: 25%;
+    height: 5rem;
+}
+.header{
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Link} from 'react-router-dom';
-import { withFormik, Form, Field } from 'formik';
+import { withFormik, Form, Field, yupToFormErrors } from 'formik';
 import axios from 'axios';
 import axiosAuth from '../axiosAuth';
+import * as Yup from 'yup';
 
 const UserForm = ({ values, errors, touched, status }) => {
   const [users, setUser] = useState([]);
@@ -18,9 +19,11 @@ const UserForm = ({ values, errors, touched, status }) => {
         <Form>
           <label htmlFor='username'>Username:</label>
           <Field id='username' type='text' name='username' />
+          {touched.username && errors.username && <p className="errors">{errors.username}</p>}
           <br />
           <label htmlFor='password'>Password:</label>
           <Field id='password' type='password' name='password' />
+          {touched.password && errors.password && <p className="errors">{errors.password}</p>}
           <br />
           <button type='submit'>Submit</button>
         </Form>
@@ -38,12 +41,16 @@ const FormikUserForm = withFormik({
       password: ''
     };
   },
+  validationSchema: Yup.object().shape({
+    username: Yup.string().required("Is Required"),
+    password: Yup.string().required("Is Required")
+  }),
   handleSubmit(
         values,
         {setStatus, resetForm}
     ) {
         console.log("submitting", values);
-        axiosAuth()
+        axiosAuth() //waiting for local storage on token
             .post(
                 "/auth/login",
                 values
