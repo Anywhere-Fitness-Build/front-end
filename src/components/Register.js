@@ -30,11 +30,11 @@ const Register = ({
           <p>{errors.name}</p>
         )}
         <label>
-          Email:
+          Password:
         </label>
         <Field
         type = "text"
-        name = "email"
+        name = "password"
         />
         {touched.name &&
         errors.name && (
@@ -44,43 +44,43 @@ const Register = ({
           I am an instructor
          <Field 
         type="checkbox"
-        name="terms"
+        name="isInstructor"
         checked={values.terms}
         />
         </label>
-        <button type = "register">Register</button>
+        <button type = "submit">Register</button>
       </Form>
       {user.map(users => (
         <ul key = {users.id}>
             <li>username: {users.name}</li>
-            <li>email: {users.email}</li>
+            <li>password: {users.password}</li>
         </ul>
       ))}
     </div>
   );
 };
 
-const FormikRegister = withFormik({
+withFormik({
   mapPropsToValues({
     username,
-    email,
-    terms
+    password,
+    isInstructor
   }) {
     return {
       username: "",
-      email: "",
-      terms: terms || false
+      password: "",
+      isInstructor: isInstructor || false
     };
   },
 validationSchema: Yup.object().shape({
   username: Yup.string().required(),
-  email: Yup.string().email().required()
+  password: Yup.string().required()
 }),
 handleSubmit(values, {setStatus}) {
   console.log("submitting");
   axios
       .post(
-        "https://anywhere-fitness-bw.herokuapp.com",
+        "https://anywhere-fitness-bw.herokuapp.com/auth/register/",
         values
       )
       .then(res => {
@@ -91,4 +91,4 @@ handleSubmit(values, {setStatus}) {
         );
         }
 })(Register);
-export default FormikRegister;
+export default Register;
