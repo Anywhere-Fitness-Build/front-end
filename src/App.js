@@ -7,7 +7,7 @@ import ClassesInstr from './components/ClassesInstr';
 import DashboardUser from './components/DashboardUser';
 import DashboardInstr from './components/DashboardInstr';
 import Register from './components/Register';
-import AppState from './context/AppState';
+import AppState from './components/context/AppState';
 
 const App = () => {
   return (
