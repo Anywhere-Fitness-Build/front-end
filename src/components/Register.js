@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {withFormik, Form, Field} from 'formik';
+import {Link} from 'react-router-dom';
 import * as Yup from 'yup';
 import axios from 'axios';
 import '../App.css';
@@ -17,7 +18,7 @@ const Register = ({
   return (
     <div className = "register">
       <Form>
-      <div className = "username">
+      <div className = "regUsername">
         <label>
           Username:
         </label>
@@ -30,7 +31,7 @@ const Register = ({
           <p>{errors.username}</p>
         )}
         </div>
-        <div className = "password">
+        <div className = "regPassword">
         <label>
           Password:
         </label>
@@ -43,7 +44,7 @@ const Register = ({
           <p>{errors.password}</p>
         )}
         </div>
-        <div className = "checkbox">
+        <div className = "regCheckbox">
         <label>
           I am an instructor
          <Field 
@@ -53,7 +54,9 @@ const Register = ({
         />
         </label>
         </div>
+        <div className = "regButton">
         <button type = "submit">Register</button>
+        </div>
       </Form>
       {user.map(users => (
         <ul key = {users.id}>
@@ -64,7 +67,7 @@ const Register = ({
     </div>
   );
 };
-
+//<p>Already have an account?</p><Link to "/login">click here</Link>
 const FormikRegister = withFormik({
   mapPropsToValues({
     username,
@@ -82,7 +85,8 @@ validationSchema: Yup.object().shape({
   password: Yup.string().required()
 }),
 handleSubmit(values, {setStatus}) {
-  console.log("submitting");
+  console.log("submitting", values);
+  console.log("this is values", values);
   axios
       .post(
         "https://anywhere-fitness-bw.herokuapp.com/auth/register/",

@@ -7,13 +7,16 @@ flex-direction: column;
 align-items: center;
 margin-top: 25%;
 }
-.username {
+.regUsername {
     margin-bottom: 15%;
 }
-.password {
+.regPassword {
     margin-bottom: 15%;
 }
-.checkbox {
+.regCheckbox {
     margin-bottom: 15%;
+}
+.regButton {
+    background: red;
 }
 
