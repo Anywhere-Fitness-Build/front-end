@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {withFormik, Form, Field} from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-
 import '../App.css';
 
 const Register = ({
@@ -16,19 +15,22 @@ const Register = ({
     ]);
   }, [status]);
   return (
-    <div>
+    <div className = "register">
       <Form>
+      <div className = "username">
         <label>
           Username:
         </label>
         <Field
-        type = "text"
-        name = "username"
+        type="text"
+        name="username"
         />
-        {touched.name &&
-        errors.name && (
-          <p>{errors.name}</p>
+        {touched.username &&
+        errors.username && (
+          <p>{errors.username}</p>
         )}
+        </div>
+        <div className = "password">
         <label>
           Password:
         </label>
@@ -36,23 +38,26 @@ const Register = ({
         type = "text"
         name = "password"
         />
-        {touched.name &&
-        errors.name && (
-          <p>{errors.name}</p>
+        {touched.password &&
+        errors.password && (
+          <p>{errors.password}</p>
         )}
+        </div>
+        <div className = "checkbox">
         <label>
           I am an instructor
          <Field 
         type="checkbox"
         name="isInstructor"
-        checked={values.terms}
+        checked={values.isInstructor}
         />
         </label>
+        </div>
         <button type = "submit">Register</button>
       </Form>
       {user.map(users => (
         <ul key = {users.id}>
-            <li>username: {users.name}</li>
+            <li>username: {users.username}</li>
             <li>password: {users.password}</li>
         </ul>
       ))}
@@ -60,7 +65,7 @@ const Register = ({
   );
 };
 
-withFormik({
+const FormikRegister = withFormik({
   mapPropsToValues({
     username,
     password,
@@ -91,4 +96,4 @@ handleSubmit(values, {setStatus}) {
         );
         }
 })(Register);
-export default Register;
+export default FormikRegister;
