@@ -1,6 +1,3 @@
-* {
-    background: lightblue;
-}
 .register {
 display: flex;
 flex-direction: column;
@@ -16,7 +13,41 @@ margin-top: 25%;
 .regCheckbox {
     margin-bottom: 15%;
 }
-.regButton {
-    background: red;
+.loginContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: lightgray;
+    border: 2px solid gray;
+    margin: 5%;
+    padding: 2%;
 }
 
+.dashContainer{
+    width: 100%;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.classes{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+.class{
+    border: 1px solid red;
+    width: 25%;
+    height: 5rem;
+}
+.header{
+    display: flex;
+    justify-content: space-around;
+}

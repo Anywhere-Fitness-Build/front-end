@@ -58,6 +58,7 @@ const Register = ({
         <button type = "submit">Register</button>
         </div>
       </Form>
+      <p>Already have an account? <Link to = "/login">Login here</Link></p>
       {user.map(users => (
         <ul key = {users.id}>
             <li>username: {users.username}</li>
@@ -67,7 +68,7 @@ const Register = ({
     </div>
   );
 };
-//<p>Already have an account?</p><Link to "/login">click here</Link>
+
 const FormikRegister = withFormik({
   mapPropsToValues({
     username,
@@ -86,7 +87,6 @@ validationSchema: Yup.object().shape({
 }),
 handleSubmit(values, {setStatus}) {
   console.log("submitting", values);
-  console.log("this is values", values);
   axios
       .post(
         "https://anywhere-fitness-bw.herokuapp.com/auth/register/",
@@ -94,10 +94,11 @@ handleSubmit(values, {setStatus}) {
       )
       .then(res => {
         console.log("success", res);
+        setStatus(res.data);
       })
-      .catch(err =>
+      .catch(err => {
         console.log(err.response)
-        );
+      });
         }
 })(Register);
 export default FormikRegister;
