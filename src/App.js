@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ClassesUser from './components/ClassesUser';
+import ClassesAttend from './components/ClassesAttend';
 import Login from './components/Login';
 import ClassesInstr from './components/ClassesInstr';
 import DashboardUser from './components/DashboardUser';
@@ -21,6 +22,7 @@ const App = () => {
             <Route path='/login' component={Login} />
             <Route path='/classesuser' component={ClassesUser} />
             <Route path='/classesinstructor' component={ClassesInstr} />
+            <Route path='/classesattendance/:id' component={ClassesAttend} />
           </div>
         </Switch>
       </Router>

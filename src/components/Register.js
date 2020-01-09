@@ -5,6 +5,9 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import '../App.css';
 
+function dashboard(props) {
+  props.history.push('/dashboarduser');
+}
 const Register = ({
   values, errors, touched, status
 }) => {
@@ -57,6 +60,9 @@ const Register = ({
         <div className = "regButton">
         <button type = "submit">Register</button>
         </div>
+        {/* the following button is here because my TL said I just need an onClick
+        event to hit MVP */}
+        <button onClick = {() => dashboard()}>To dashboard</button>
       </Form>
       <p>Already have an account? <Link to = "/login">Login here</Link></p>
       {user.map(users => (
