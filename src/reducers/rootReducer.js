@@ -38,13 +38,14 @@ const rootReducer = (state = initialState, action) => {
     case LOGIN_START:
       return { ...state, isLoggingIn: true };
     case LOGIN_SUCCESS:
-      const { id, username } = action.payload;
+      const { id, username, role_id } = action.payload;
       return {
         ...state,
         loggedIn: true,
         isLoggingIn: false,
         userId: id,
-        username: username
+        username: username,
+        roleId: role_id
       };
     case LOGIN_FAIL:
       return { ...state, isLoggingIn: false };

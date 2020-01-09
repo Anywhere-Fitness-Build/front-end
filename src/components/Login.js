@@ -71,7 +71,11 @@ const FormikUserForm = withFormik({
         localStorage.setItem("token", res.data.token);
         dispatch({
           type: LOGIN_SUCCESS,
-          payload: { id: res.data.id, username: res.data.username }
+          payload: {
+            id: res.data.id,
+            username: res.data.username,
+            role_id: res.data.role_id
+          }
         });
       })
       .catch(err => {
