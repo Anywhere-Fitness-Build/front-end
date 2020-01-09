@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { withFormik, Form, Field, yupToFormErrors } from "formik";
 import axiosAuth from "../axiosAuth";
 import * as Yup from "yup";
+import { Button } from "@material-ui/core/";
 
 const UserForm = ({ values, errors, touched, status, loggedIn }) => {
   const [users, setUser] = useState([]);
@@ -34,7 +35,7 @@ const UserForm = ({ values, errors, touched, status, loggedIn }) => {
             <p className="errors">{errors.password}</p>
           )}
           <br />
-          <button type="submit">Submit</button>
+          <Button fullWidth variant="contained" color="primary" type="submit">Submit</Button>
         </Form>
         <p>
           Don't have an account? <Link to="/register">Register Here.</Link>
