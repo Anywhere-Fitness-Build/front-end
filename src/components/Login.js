@@ -23,17 +23,21 @@ const UserForm = ({ values, errors, touched, status, loggedIn }) => {
       <div className="login">
         <h1>Login: </h1>
         <Form>
+        <div className="user">
           <label htmlFor="username">Username:</label>
           <Field id="username" type="text" name="username" />
           {touched.username && errors.username && (
             <p className="errors">{errors.username}</p>
           )}
+          </div>
           <br />
-          <label htmlFor="password">Password:</label>
+          <div className="pass">
+          <label htmlFor="password">Password: </label>
           <Field id="password" type="password" name="password" />
           {touched.password && errors.password && (
             <p className="errors">{errors.password}</p>
           )}
+          </div>
           <br />
           <Button fullWidth variant="contained" color="primary" type="submit">Submit</Button>
         </Form>
