@@ -30,10 +30,13 @@ const ClassCard = (props) => {
       <Card className={classes.card}>
         <CardContent>
           <Typography variant="h5" component="h2">
-            {console.log(props.name)}
+            {props.name}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            Instructor name
+            {props.instructor_name}
+          </Typography>
+          <Typography className={classes.pos} color="textSecondary">
+            {props.type}
           </Typography>
         </CardContent>
       </Card>

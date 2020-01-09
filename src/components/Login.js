@@ -56,11 +56,6 @@ const FormikUserForm = withFormik({
     username: Yup.string().required("Is Required"),
     password: Yup.string().required("Is Required")
   }),
-<<<<<<< HEAD
-  handleSubmit(values,  { setStatus, resetForm, props}) {
-    console.log("submitting", values);
-    axiosAuth() //waiting for local storage on token
-=======
   handleSubmit(values, stuff) {
     console.log("props: ", stuff);
 
@@ -68,7 +63,6 @@ const FormikUserForm = withFormik({
     const { dispatch } = props;
     dispatch({ type: LOGIN_START });
     axiosAuth()
->>>>>>> 4f2134f25fb02f31814734515960ba95e3db2613
       .post("/auth/login", values)
       .then(res => {
         console.log("success", res);
