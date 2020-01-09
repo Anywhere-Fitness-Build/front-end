@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Redirect } from "react-router-dom";
 import { withFormik, Form, Field, yupToFormErrors } from "formik";
-import axios from "axios";
 import axiosAuth from "../axiosAuth";
 import * as Yup from "yup";
 
@@ -11,6 +10,7 @@ const UserForm = ({ values, errors, touched, status }) => {
     console.log("status has changed", status);
     status && setUser(users => [...users, status]);
   }, [status]);
+
   return (
     <div className="loginContainer">
       <div className="login">
@@ -50,16 +50,15 @@ const FormikUserForm = withFormik({
     username: Yup.string().required("Is Required"),
     password: Yup.string().required("Is Required")
   }),
-  handleSubmit(values, { setStatus, resetForm }) {
-    console.log("submitting", values);
+  handleSubmit(values, { setStatus, resetForm, props }) {
     axiosAuth() //waiting for local storage on token
       .post("/auth/login", values)
       .then(res => {
         console.log("success", res);
-        localStorage.setItem("token", res.data.token);
-        console.log("Token set");
         setStatus(res.data);
         resetForm();
+        localStorage.setItem("token", res.data.token);
+        console.log("Token set");
       })
       .catch(err => console.log(err.response));
   }

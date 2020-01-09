@@ -1,8 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import axios from "axios";
 import axiosAuth from "../axiosAuth";
-import { setNestedObjectValues } from "formik";
 import ClassCard from "./ClassCard";
 
 const DashboardUser = () => {
