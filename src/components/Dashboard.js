@@ -4,12 +4,6 @@ import axiosAuth from "../axiosAuth";
 import ClassCard from "./ClassCard";
 
 const DashboardUser = () => {
-  axiosAuth()
-    .get("/auth/whoami")
-    .then(res => {
-      console.log("success", res);
-    })
-    .catch(err => console.log(err.response));
   return (
     <div>
       <Header />

@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { LOGIN_FAIL, LOGIN_START, LOGIN_SUCCESS } from "../actions/userActions";
+import { Link, withRouter, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import { withFormik, Form, Field, yupToFormErrors } from "formik";
 import axiosAuth from "../axiosAuth";
 import * as Yup from "yup";
 
-const UserForm = ({ values, errors, touched, status }) => {
+const UserForm = ({ values, errors, touched, status, loggedIn }) => {
   const [users, setUser] = useState([]);
   useEffect(() => {
     console.log("status has changed", status);
     status && setUser(users => [...users, status]);
   }, [status]);
+
+  if (loggedIn) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <div className="loginContainer">
@@ -52,8 +58,11 @@ const FormikUserForm = withFormik({
   }),
   handleSubmit(values, stuff) {
     console.log("props: ", stuff);
-    const { setStatus, resetForm } = stuff;
-    axiosAuth() //waiting for local storage on token
+
+    const { setStatus, resetForm, props } = stuff;
+    const { dispatch } = props;
+    dispatch({ type: LOGIN_START });
+    axiosAuth()
       .post("/auth/login", values)
       .then(res => {
         console.log("success", res);
@@ -61,9 +70,16 @@ const FormikUserForm = withFormik({
         resetForm();
         localStorage.setItem("token", res.data.token);
         console.log("Token set");
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: { id: res.data.id, username: res.data.username }
+        });
       })
-      .catch(err => console.log(err.response));
+      .catch(err => {
+        console.log(err.response);
+        dispatch({ type: LOGIN_FAIL });
+      });
   }
 })(UserForm);
 
-export default withRouter(FormikUserForm);
+export default withRouter(connect(state => state)(FormikUserForm));

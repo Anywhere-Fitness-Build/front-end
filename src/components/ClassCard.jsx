@@ -43,9 +43,6 @@ const ClassCard = () => {
             Instructor name
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
       </Card>
     </CardActionArea>
   );
