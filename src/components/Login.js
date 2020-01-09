@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { withFormik, Form, Field, yupToFormErrors } from "formik";
 import axiosAuth from "../axiosAuth";
 import * as Yup from "yup";
+import { Button } from "@material-ui/core/";
 
 const UserForm = ({ values, errors, touched, status, loggedIn }) => {
   const [users, setUser] = useState([]);
@@ -22,19 +23,23 @@ const UserForm = ({ values, errors, touched, status, loggedIn }) => {
       <div className="login">
         <h1>Login: </h1>
         <Form>
+        <div className="user">
           <label htmlFor="username">Username:</label>
           <Field id="username" type="text" name="username" />
           {touched.username && errors.username && (
             <p className="errors">{errors.username}</p>
           )}
+          </div>
           <br />
-          <label htmlFor="password">Password:</label>
+          <div className="pass">
+          <label htmlFor="password">Password: </label>
           <Field id="password" type="password" name="password" />
           {touched.password && errors.password && (
             <p className="errors">{errors.password}</p>
           )}
+          </div>
           <br />
-          <button type="submit">Submit</button>
+          <Button fullWidth variant="contained" color="primary" type="submit">Submit</Button>
         </Form>
         <p>
           Don't have an account? <Link to="/register">Register Here.</Link>

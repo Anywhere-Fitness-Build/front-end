@@ -65,6 +65,9 @@ const Header = () => {
               <Typography variant="h6" className={classes.name}>
                 {username}
               </Typography>
+              <Button color="inherit" onClick={() => history.push("/dashboard")}>
+                Dashboard
+              </Button>
               <Button color="inherit" onClick={handleLogout}>
                 Logout
               </Button>
