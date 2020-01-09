@@ -1,3 +1,18 @@
+.register {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 25%;
+}
+.regUsername {
+    margin-bottom: 15%;
+}
+.regPassword {
+    margin-bottom: 15%;
+}
+.regCheckbox {
+    margin-bottom: 15%;
+}
 .loginContainer{
     display: flex;
     align-items: center;
