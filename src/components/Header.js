@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,6 +20,7 @@ const useStyles = makeStyles(theme => ({
 
 const Header = () => {
   const classes = useStyles();
+  const history = useHistory();
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -37,9 +36,12 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             Anywhere Fitness
           </Typography>
-          <Button color="inherit">Register</Button>
-
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" onClick={() => history.push("/register")}>
+            Register
+          </Button>
+          <Button color="inherit" onClick={() => history.push("/login")}>
+            Login
+          </Button>
         </Toolbar>
       </AppBar>
     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Header from "./components/Header";
 import ClassesUser from "./components/ClassesUser";
 import Login from "./components/Login";
 import ClassesInstr from "./components/ClassesInstr";
@@ -16,7 +17,10 @@ const App = () => {
           <div className="App">
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
+            <Route path="/login">
+              <Header />
+              <Login />
+            </Route>
             <Route path="/classesuser" component={ClassesUser} />
             <Route path="/classesinstructor" component={ClassesInstr} />
           </div>
