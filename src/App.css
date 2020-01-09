@@ -1,53 +1,66 @@
-.register {
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 25%;
-}
-.regUsername {
-    margin-bottom: 15%;
-}
-.regPassword {
-    margin-bottom: 15%;
-}
-.regCheckbox {
-    margin-bottom: 15%;
-}
-.loginContainer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.login{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: lightgray;
-    border: 2px solid gray;
-    margin: 5%;
-    padding: 2%;
+body {
+  margin: 0px;
 }
 
-.dashContainer{
-    width: 100%;
-    border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25%;
 }
-.classes{
-    display:flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
+.regUsername {
+  margin-bottom: 15%;
 }
-.class{
-    border: 1px solid red;
-    width: 25%;
-    height: 5rem;
+.regPassword {
+  margin-bottom: 15%;
 }
-.header{
-    display: flex;
-    justify-content: space-around;
+.regCheckbox {
+  margin-bottom: 15%;
+}
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: lightgray;
+  border: 2px solid gray;
+  margin: 5%;
+  padding: 2%;
+}
+
+.dashContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.classes {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+}
+.class {
+  border: 1px solid red;
+  width: 25%;
+  height: 5rem;
+}
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+.header {
+  display: flex;
+  justify-content: space-around;
 }

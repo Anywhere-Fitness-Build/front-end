@@ -1,30 +1,44 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ClassesUser from './components/ClassesUser';
-import Login from './components/Login';
-import ClassesInstr from './components/ClassesInstr';
-import DashboardUser from './components/DashboardUser';
-import DashboardInstr from './components/DashboardInstr';
-import Register from './components/Register';
-import AppState from './components/context/AppState';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { PERSIST_LOGIN } from "./actions/userActions";
+import Header from "./components/Header";
+import ClassesUser from "./components/ClassesUser";
+import Login from "./components/Login";
+import ClassesInstr from "./components/ClassesInstr";
+import Dashboard from "./components/Dashboard";
+import Register from "./components/Register";
+import { useEffect } from "react";
+import { persistLogin } from "./actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
+import CreateClassForm from "./components/CreateClassForm";
 
 const App = () => {
+  const dispatch = useDispatch();
+  const state = useSelector(state => state);
+  useEffect(() => {
+    dispatch(persistLogin());
+  }, [dispatch]);
+
   return (
-    <AppState>
-      <Router>
-        <Switch>
-          <div className='App'>
-            <Route path='/dashboarduser' component={DashboardUser} />
-            <Route path='/dashboardinstr' component={DashboardInstr} />
-            <Route path='/register' component={Register} />
-            <Route path='/login' component={Login} />
-            <Route path='/classesuser' component={ClassesUser} />
-            <Route path='/classesinstructor' component={ClassesInstr} />
-          </div>
-        </Switch>
-      </Router>
-    </AppState>
+    <Router>
+      <Switch>
+        <div className="App">
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/register">
+            <Header />
+            <Register />
+          </Route>
+          <Route path="/login">
+            <Header />
+            <Login />
+          </Route>
+          <Route path="/classesuser" component={ClassesUser} />
+          <Route path="/classesinstructor" component={ClassesInstr} />
+          <Route exact path="/classes/create" component={CreateClassForm} />
+        </div>
+      </Switch>
+    </Router>
   );
 };
 
