@@ -69,7 +69,6 @@ const FormikUserForm = withFormik({
         setStatus(res.data);
         resetForm();
         localStorage.setItem("token", res.data.token);
-        console.log("Token set");
         dispatch({
           type: LOGIN_SUCCESS,
           payload: { id: res.data.id, username: res.data.username }

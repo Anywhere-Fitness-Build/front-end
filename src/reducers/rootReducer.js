@@ -2,7 +2,8 @@ import {
   LOGIN_FAIL,
   LOGIN_START,
   LOGIN_SUCCESS,
-  PERSIST_LOGIN
+  PERSIST_LOGIN,
+  LOGOUT
 } from "../actions/userActions";
 
 const initialState = {
@@ -18,6 +19,14 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOGOUT:
+      return {
+        ...state,
+        loggedIn: false,
+        userId: -1,
+        username: "",
+        roleId: -1
+      };
     case PERSIST_LOGIN:
       return {
         ...state,
