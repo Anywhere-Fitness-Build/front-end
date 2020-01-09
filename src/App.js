@@ -16,7 +16,10 @@ const App = () => {
         <Switch>
           <div className="App">
             <Route path="/dashboard" component={Dashboard} />
-            <Route path="/register" component={Register} />
+            <Route path="/register">
+              <Header />
+              <Register />
+            </Route>
             <Route path="/login">
               <Header />
               <Login />
