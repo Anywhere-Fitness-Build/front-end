@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Link, Redirect } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { withFormik, Form, Field, yupToFormErrors } from "formik";
 import axiosAuth from "../axiosAuth";
 import * as Yup from "yup";
@@ -50,7 +50,9 @@ const FormikUserForm = withFormik({
     username: Yup.string().required("Is Required"),
     password: Yup.string().required("Is Required")
   }),
-  handleSubmit(values, { setStatus, resetForm, props }) {
+  handleSubmit(values, stuff) {
+    console.log("props: ", stuff);
+    const { setStatus, resetForm } = stuff;
     axiosAuth() //waiting for local storage on token
       .post("/auth/login", values)
       .then(res => {
@@ -64,4 +66,4 @@ const FormikUserForm = withFormik({
   }
 })(UserForm);
 
-export default FormikUserForm;
+export default withRouter(FormikUserForm);

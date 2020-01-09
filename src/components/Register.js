@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
 import "../App.css";
@@ -76,4 +76,4 @@ const FormikRegister = withFormik({
       });
   }
 })(Register);
-export default FormikRegister;
+export default withRouter(FormikRegister);

@@ -1,17 +1,22 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers/rootReducer";
 import Header from "./components/Header";
 import ClassesUser from "./components/ClassesUser";
 import Login from "./components/Login";
 import ClassesInstr from "./components/ClassesInstr";
 import Dashboard from "./components/Dashboard";
 import Register from "./components/Register";
-import AppState from "./components/context/AppState";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const App = () => {
   return (
-    <AppState>
+    <Provider store={store}>
       <Router>
         <Switch>
           <div className="App">
@@ -29,7 +34,7 @@ const App = () => {
           </div>
         </Switch>
       </Router>
-    </AppState>
+    </Provider>
   );
 };
 
