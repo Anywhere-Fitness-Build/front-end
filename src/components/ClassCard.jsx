@@ -22,18 +22,21 @@ const useStyles = makeStyles({
   }
 });
 
-const ClassCard = () => {
+const ClassCard = (props) => {
   const classes = useStyles();
-
+  console.log(props.name);
   return (
     <CardActionArea className={classes.area}>
       <Card className={classes.card}>
         <CardContent>
           <Typography variant="h5" component="h2">
-            Test Title
+            {props.name}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            Instructor name
+            {props.instructor_name}
+          </Typography>
+          <Typography className={classes.pos} color="textSecondary">
+            {props.type}
           </Typography>
         </CardContent>
       </Card>

@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import Header from "./Header";
 import axiosAuth from "../axiosAuth";
 import ClassCard from "./ClassCard";
-
 import { useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router";
-
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 
@@ -33,7 +31,13 @@ const DashboardUser = () => {
   const history = useHistory();
   const [classes, setClasses] = useState([]);
   const styles = useStyles();
-
+  useEffect(() => {
+    axiosAuth().get("/classes")
+    .then(res => {
+      console.log("successful get", res)
+      setClasses(res.data)
+    })
+  }, [])
   if (localStorage.getItem("token")) {
     if (!loggedIn) {
       return <Redirect to="/login" />;
@@ -65,12 +69,9 @@ const DashboardUser = () => {
           </Button>
         ) : null}
         <div className={styles.gridContainer}>
-          <ClassCard />
-          <ClassCard />
-          <ClassCard />
-          <ClassCard />
-          <ClassCard />
-          <ClassCard />
+          {classes.map((classObj, index) => (
+            <ClassCard key={index} name={classObj.name} instructor_name={classObj.instructor_name} type={classObj.type} />
+          ))}
         </div>
       </div>
     </div>
