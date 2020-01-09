@@ -1,8 +1,13 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { PERSIST_LOGIN } from "./actions/userActions";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import Header from "./components/Header";
+
 import ClassesUser from "./components/ClassesUser";
 import Login from "./components/Login";
 import ClassesInstr from "./components/ClassesInstr";
@@ -24,6 +29,9 @@ const App = () => {
     <Router>
       <Switch>
         <div className="App">
+          <Route exact path="/">
+            <Redirect to="/login" />
+          </Route>
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/register">
             <Header />
