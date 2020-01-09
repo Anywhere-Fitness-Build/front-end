@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
 import "../App.css";
+import { useSelector } from "react-redux";
 
 const Register = ({ values, errors, touched, status }) => {
   const [user, setUser] = useState([]);
+  const loggedIn = useSelector(state => state.loggedIn);
+
   useEffect(() => {
     console.log("status has changed", status);
     status && setUser(user => [...user, status]);
   }, [status]);
+
+  if (loggedIn) return <Redirect to="/dashboard" />;
+
   return (
     <div className="register">
       <Form>

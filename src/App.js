@@ -11,6 +11,7 @@ import Register from "./components/Register";
 import { useEffect } from "react";
 import { persistLogin } from "./actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
+import CreateClassForm from "./components/CreateClassForm";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const App = () => {
           </Route>
           <Route path="/classesuser" component={ClassesUser} />
           <Route path="/classesinstructor" component={ClassesInstr} />
+          <Route exact path="/classes/create" component={CreateClassForm} />
         </div>
       </Switch>
     </Router>
