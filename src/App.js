@@ -26,21 +26,6 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <AppState>
-      <Router>
-        <Switch>
-          <div className='App'>
-            <Route path='/dashboarduser' component={DashboardUser} />
-            <Route path='/dashboardinstr' component={DashboardInstr} />
-            <Route path='/register' component={Register} />
-            <Route path='/login' component={Login} />
-            <Route path='/classesuser' component={ClassesUser} />
-            <Route path='/classesinstructor' component={ClassesInstr} />
-            <Route path='/classesattendance/:id' component={ClassesAttend} />
-          </div>
-        </Switch>
-      </Router>
-    </AppState>
     <Router>
       <Switch>
         <div className="App">
